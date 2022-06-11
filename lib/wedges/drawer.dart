@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 
 class AppDrawer extends StatelessWidget {
   final imageurl =
@@ -26,7 +25,10 @@ class AppDrawer extends StatelessWidget {
               )),
           ListTile(
             leading: Icon(CupertinoIcons.home),
-            title: Text("Home page"),
+            title: Text(
+              "Home page",
+              textScaleFactor: 1.2,
+            ),
           ),
           ListTile(
             leading: Icon(CupertinoIcons.phone),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/wedges/Item_widgit.dart';
 import 'package:flutter_application_1/wedges/drawer.dart';
 
 class HomePage extends StatelessWidget {
@@ -10,8 +11,12 @@ class HomePage extends StatelessWidget {
         title: Text("My First App"),
       ),
       body: Center(
-        child: Container(
-          child: Text("This is my rehan app $todays"),
+        child: ListView.builder(
+          itemBuilder: (context, index) {
+            return ItemWidget(
+              list: [index],
+            );
+          },
         ),
       ),
       drawer: AppDrawer(),
