@@ -1,45 +1,62 @@
+import 'dart:convert';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 
-class AppDrawer extends StatelessWidget {
-  final imageurl =
-      "https://imgs.search.brave.com/skrh1VQIX5O2CmCbFooneMfLSCCP8K2NrgFjsXVIgTw/rs:fit:734:225:1/g:ce/aHR0cHM6Ly90c2Uz/Lm1tLmJpbmcubmV0/L3RoP2lkPU9JUC5G/Q2FjUlJ3dEE2YVla/REtSVTlVdDVBSGFF/eSZwaWQ9QXBp";
+class AppDrawer extends StatefulWidget {
+  @override
+  State<AppDrawer> createState() => _AppDrawerState();
+}
+
+class _AppDrawerState extends State<AppDrawer> {
+  var urldata, done;
+
+  void getPhoto() async {
+    var url = Uri.parse(
+        "https://api.unsplash.com/photos/?client_id=WWsod9MiUmyfN--d2Zrx3_zrofyyTWaUaW3naEZhsco");
+    final res = await http.get(url);
+    setState(() {
+      urldata = jsonDecode(res.body);
+      done = urldata.elementAt(1)['urls']['small'];
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
+    getPhoto();
     return Drawer(
-      child: ListView(
-        children: [
-          DrawerHeader(
-              padding: EdgeInsets.zero,
-              child: UserAccountsDrawerHeader(
-                accountName:
-                    Text("Hanzala", style: TextStyle(color: Colors.white)),
-                accountEmail: Text(
-                  "Every days is better",
-                  style: TextStyle(color: Colors.white60),
-                ),
-                currentAccountPicture: CircleAvatar(
-                  backgroundImage: NetworkImage(imageurl),
-                ),
-              )),
-          ListTile(
-            leading: Icon(CupertinoIcons.home),
-            title: Text(
-              "Home page",
-              textScaleFactor: 1.2,
-            ),
+        child: ListView(
+      children: [
+        DrawerHeader(
+            padding: EdgeInsets.zero,
+            child: UserAccountsDrawerHeader(
+              accountName:
+                  Text("Hanzala", style: TextStyle(color: Colors.white)),
+              accountEmail: Text(
+                "Every days is better",
+                style: TextStyle(color: Colors.white60),
+              ),
+              currentAccountPicture: CircleAvatar(
+                backgroundImage: NetworkImage(done),
+              ),
+            )),
+        ListTile(
+          leading: Icon(CupertinoIcons.home),
+          title: Text(
+            "Home page",
+            textScaleFactor: 1.2,
           ),
-          ListTile(
-            leading: Icon(CupertinoIcons.phone),
-            title: Text("My Works"),
-          ),
-          ListTile(
-            leading: Icon(CupertinoIcons.decrease_indent),
-            title: Text("Corrections"),
-          ),
-        ],
-      ),
-    );
+        ),
+        ListTile(
+          leading: Icon(CupertinoIcons.phone),
+          title: Text("My Works"),
+        ),
+        ListTile(
+          leading: Icon(CupertinoIcons.decrease_indent),
+          title: Text("Corrections"),
+        ),
+      ],
+    ));
   }
 }
