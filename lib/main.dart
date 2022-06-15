@@ -5,20 +5,22 @@ import 'package:flutter_application_1/utils/routes.dart';
 import 'package:flutter_application_1/wedges/theme.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: LightTheme.themeData,
-      initialRoute: MyRoutes.LoginRoutes,
+      initialRoute: MyRoutes.homeRoutes,
       routes: {
-        "/": (context) => Loginpage(),
-        MyRoutes.HomeRoutes: (context) => HomePage(),
-        MyRoutes.LoginRoutes: (context) => Loginpage(),
+        "/": (context) =>const Loginpage(),
+        MyRoutes.homeRoutes: (context) => const HomePage(),
+        MyRoutes.loginRoutes: (context) =>const Loginpage(),
       },
     );
   }

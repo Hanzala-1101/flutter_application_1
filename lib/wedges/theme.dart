@@ -9,7 +9,7 @@ class LightTheme {
       );
 }
 
-class darktheme {
+class Darktheme {
   static ThemeData get themeData => ThemeData(
         fontFamily: GoogleFonts.akronim().fontFamily,
         primarySwatch: Colors.teal,

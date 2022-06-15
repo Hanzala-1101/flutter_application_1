@@ -7,32 +7,23 @@ String url =
 class ItemWidget extends StatelessWidget {
   final Item item;
 
-  const ItemWidget({Key? key, required this.item})
-      : assert(item != null),
-        super(key: key);
+  const ItemWidget({Key? key, required this.item}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Card(
-      shadowColor: Color(152496321475),
+      shadowColor: const Color(0xFFFDDDDD),
       elevation: 5.0,
       child: ListTile(
         onTap: () {
           final snackBar = SnackBar(
             content: const Text('have a good time'),
-            action: SnackBarAction(
-              label: 'Undo',
-              onPressed: () async {
-          
-                    }
-            ),
+            action: SnackBarAction(label: 'Undo', onPressed: () async {}),
           );
           ScaffoldMessenger.of(context).showSnackBar(snackBar);
         },
-        
         leading: Image.network(url),
         title: Text(item.name),
-        
         subtitle: Text(item.blazer.toString()),
         trailing: Text(item.average.toString()),
       ),

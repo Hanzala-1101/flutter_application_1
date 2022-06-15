@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/utils/routes.dart';
 
 class Loginpage extends StatefulWidget {
+  const Loginpage({Key? key}) : super(key: key);
+
   @override
   State<Loginpage> createState() => _LoginpageState();
 }
@@ -17,8 +19,9 @@ class _LoginpageState extends State<Loginpage> {
       setState(() {
         changebutton = true;
       });
-      await Future.delayed(Duration(seconds: 1));
-      await Navigator.pushNamed(context, MyRoutes.HomeRoutes);
+      await Future.delayed(const Duration(seconds: 1));
+      if (!mounted) return;
+      await Navigator.pushNamed(context, MyRoutes.homeRoutes);
       setState(() {
         changebutton = false;
       });
@@ -28,7 +31,7 @@ class _LoginpageState extends State<Loginpage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: Text("Login page")),
+        appBar: AppBar(title: const Text("Login page")),
         body: Center(
             child: Padding(
           padding: const EdgeInsets.all(20.0),
@@ -41,11 +44,11 @@ class _LoginpageState extends State<Loginpage> {
                     "assets/images/nature.jpg",
                     fit: BoxFit.scaleDown,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 50,
                   ),
                   Text("Nature is god gifted do not destroy $name",
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 25,
                         color: Colors.redAccent,
@@ -56,7 +59,7 @@ class _LoginpageState extends State<Loginpage> {
                     child: Column(
                       children: [
                         TextFormField(
-                          decoration: InputDecoration(
+                          decoration: const InputDecoration(
                             hintText: "Enter the text",
                             labelText: "Enter your name",
                           ),
@@ -84,7 +87,7 @@ class _LoginpageState extends State<Loginpage> {
                             return null;
                           },
                           obscureText: true,
-                          decoration: InputDecoration(
+                          decoration: const InputDecoration(
                             hintText: "Enter the text",
                             labelText: "Enter your password",
                           ),
@@ -92,7 +95,7 @@ class _LoginpageState extends State<Loginpage> {
                       ],
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
                   Material(
@@ -101,16 +104,16 @@ class _LoginpageState extends State<Loginpage> {
                     child: InkWell(
                       onTap: () => moveToHome(context),
                       child: AnimatedContainer(
-                        duration: Duration(seconds: 1),
+                        duration: const Duration(seconds: 1),
                         height: 50,
                         width: changebutton ? 50 : 150,
                         alignment: Alignment.center,
                         child: changebutton
-                            ? Icon(
+                            ? const Icon(
                                 Icons.done,
                                 color: Colors.white,
                               )
-                            : Text(
+                            : const Text(
                                 "Login",
                                 style: TextStyle(
                                     fontSize: 20.0,
@@ -120,17 +123,6 @@ class _LoginpageState extends State<Loginpage> {
                       ),
                     ),
                   ),
-                  // ElevatedButton(
-                  //   child: Text("login"),
-                  //   style: TextButton.styleFrom(
-                  //       primary: Color.lerp(Colors.black, Colors.black, 5.3),
-                  //       shadowColor: Color.alphaBlend(
-                  //           Colors.deepPurple, Colors.greenAccent),
-                  //       fixedSize: Size(100, 20)),
-                  //   onPressed: () {
-                  //     Navigator.pushNamed(context, MyRoutes.HomeRoutes);
-                  //   },
-                  // ),
                 ],
               ),
             ),
