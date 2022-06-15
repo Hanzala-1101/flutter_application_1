@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -10,12 +9,13 @@ class AppDrawer extends StatefulWidget {
 }
 
 class _AppDrawerState extends State<AppDrawer> {
+  // var done = "https://wallpapercave.com/wp/wp2722928.jpg";
   var urldata, done;
 
   void getPhoto() async {
     var url = Uri.parse(
         "https://api.unsplash.com/photos/?client_id=WWsod9MiUmyfN--d2Zrx3_zrofyyTWaUaW3naEZhsco");
-    final res = await http.get(url);
+    var res = await http.get(url);
     setState(() {
       urldata = jsonDecode(res.body);
       done = urldata.elementAt(1)['urls']['small'];

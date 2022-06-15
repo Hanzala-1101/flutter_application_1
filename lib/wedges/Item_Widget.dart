@@ -27,16 +27,14 @@ class ItemWidget extends StatelessWidget {
                     }
             ),
           );
-
-          // Find the ScaffoldMessenger in the widget tree
-          // and use it to show a SnackBar.
           ScaffoldMessenger.of(context).showSnackBar(snackBar);
         },
         
         leading: Image.network(url),
         title: Text(item.name),
+        
         subtitle: Text(item.blazer.toString()),
-        trailing: Text(item.average),
+        trailing: Text(item.average.toString()),
       ),
     );
   }
