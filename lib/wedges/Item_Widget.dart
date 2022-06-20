@@ -1,6 +1,7 @@
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/modules/catalog.dart';
-
 String url =
     "https://images.unsplash.com/photo-1655019680534-0838d2870bfd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzMzcxODl8MHwxfGFsbHwzfHx8fHx8Mnx8MTY1NTA0ODEzMw&ixlib=rb-1.2.1&q=20&w=40";
 

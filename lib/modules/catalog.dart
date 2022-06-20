@@ -2,6 +2,9 @@
 import 'dart:convert';
 
 class Item {
+   static List<Item> workings = [
+    
+  ];
   final String name;
   final int id;
   final int blazer;
@@ -74,5 +77,7 @@ class Item {
 }
 
 class ItemModel {
-  static List<Item> product = [];
+  static List<Item> workings = [
+    
+  ];
 }
